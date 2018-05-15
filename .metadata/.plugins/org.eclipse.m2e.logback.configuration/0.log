@@ -2189,3 +2189,9 @@ org.xml.sax.SAXParseException: The markup in the document following the root ele
 2018-05-15 14:06:26,647 [Worker-203] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2018-05-15 14:06:28,623 [Worker-204] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2018-05-15 14:06:28,624 [Worker-204] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-05-15 14:06:28,625 [Worker-204] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-15 14:06:28,625 [Worker-204] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2018-05-15 14:47:17,197 [Worker-200] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-15 14:47:17,200 [Worker-200] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-05-15 14:47:17,202 [Worker-200] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2018-05-15 14:47:17,203 [Worker-200] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource

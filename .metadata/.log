@@ -2448,3 +2448,69 @@ Caused by: java.io.IOException: Source ref refs/heads/master doesn't resolve to 
 
 !ENTRY org.eclipse.egit.ui 4 0 2018-05-15 14:09:11.276
 !MESSAGE Can't connect to any repository: git@github.com:meenarohini/BulbCompany.git (An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.)
+
+!ENTRY org.eclipse.egit.core 4 0 2018-05-15 14:26:07.250
+!MESSAGE An exception occurred during push on URI file:///C:\Max Workspace\.git: An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Exception caught during execution of push command
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:190)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:77)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:48)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Source ref refs/heads/master doesn't resolve to any object.
+	at org.eclipse.jgit.transport.RemoteRefUpdate.<init>(RemoteRefUpdate.java:288)
+	at org.eclipse.jgit.transport.RemoteRefUpdate.<init>(RemoteRefUpdate.java:192)
+	at org.eclipse.jgit.transport.Transport.findRemoteRefUpdatesFor(Transport.java:655)
+	at org.eclipse.jgit.transport.Transport.findRemoteRefUpdatesFor(Transport.java:1344)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:158)
+	... 4 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2018-05-15 14:26:07.251
+!MESSAGE Can't connect to any repository: file:///C:\Max Workspace\.git (An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.)
+
+!ENTRY org.eclipse.egit.core 4 0 2018-05-15 14:43:36.041
+!MESSAGE An exception occurred during push on URI file:///C:\Max Workspace\.git: An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Exception caught during execution of push command
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:190)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:77)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:48)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Source ref refs/heads/master doesn't resolve to any object.
+	at org.eclipse.jgit.transport.RemoteRefUpdate.<init>(RemoteRefUpdate.java:288)
+	at org.eclipse.jgit.transport.RemoteRefUpdate.<init>(RemoteRefUpdate.java:192)
+	at org.eclipse.jgit.transport.Transport.findRemoteRefUpdatesFor(Transport.java:655)
+	at org.eclipse.jgit.transport.Transport.findRemoteRefUpdatesFor(Transport.java:1344)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:158)
+	... 4 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2018-05-15 14:43:36.043
+!MESSAGE Can't connect to any repository: file:///C:\Max Workspace\.git (An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.)
+
+!ENTRY org.eclipse.egit.core 4 0 2018-05-15 14:44:23.078
+!MESSAGE An exception occurred during push on URI C:\Max Workspace\BulbCompany\.git: An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Exception caught during execution of push command
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:190)
+	at org.eclipse.egit.core.op.PushOperation.run(PushOperation.java:217)
+	at org.eclipse.egit.ui.internal.push.PushJob.performJob(PushJob.java:77)
+	at org.eclipse.egit.ui.internal.jobs.RepositoryJob.run(RepositoryJob.java:48)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:55)
+Caused by: java.io.IOException: Source ref refs/heads/master doesn't resolve to any object.
+	at org.eclipse.jgit.transport.RemoteRefUpdate.<init>(RemoteRefUpdate.java:288)
+	at org.eclipse.jgit.transport.RemoteRefUpdate.<init>(RemoteRefUpdate.java:192)
+	at org.eclipse.jgit.transport.Transport.findRemoteRefUpdatesFor(Transport.java:655)
+	at org.eclipse.jgit.transport.Transport.findRemoteRefUpdatesFor(Transport.java:1344)
+	at org.eclipse.jgit.api.PushCommand.call(PushCommand.java:158)
+	... 4 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2018-05-15 14:44:23.079
+!MESSAGE Can't connect to any repository: C:\Max Workspace\BulbCompany\.git (An internal Exception occurred during push: Source ref refs/heads/master doesn't resolve to any object.)
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-05-15 14:47:17.198
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+
+!ENTRY org.eclipse.m2e.logback.appender 2 0 2018-05-15 14:47:17.203
+!MESSAGE Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!

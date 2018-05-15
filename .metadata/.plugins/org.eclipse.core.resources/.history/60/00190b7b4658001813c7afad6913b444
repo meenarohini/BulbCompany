@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 public class BuulbReadingPage extends BasePage{
 
 	
@@ -31,13 +30,6 @@ public class BuulbReadingPage extends BasePage{
 			enterTextTo(box4, String.valueOf(val2));
 			enterTextTo(box5, String.valueOf(val3));
 			enterTextTo(box6, String.valueOf(val4));
-			if(Integer.parseInt(expectedvalue)<Integer.parseInt(Actualvalue){
-				Assert.assertTrue(true);
-			}
-			else
-			{
-				Assert.assertTrue(false);
-		}
 		}
 		public String generateMonthDateXpath_Datemeter(String month , String date){
 			String genericXpath= "//div[@id='someid']//div[@class='month-box'][.//div[contains(@class,'month-title') and contains(text(),'"+"<MONTH>"+"')]]//span[text()='"+"<DATE>"+"']";
