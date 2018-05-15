@@ -1,0 +1,251 @@
+package pages;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class SearchFlight extends BasePage{
+	public SearchFlight(WebDriver driver){
+		super(driver);
+		
+	}
+	
+	private String multicitySourceCity1_xpath ="//input[@class='required_field cityPadRight inputfocus clsOrigin origin_m1']";
+	private String multicitySourceCity2_xpath="//input[@class='required_field cityPadRight inputfocus clsOrigin origin_m2']";
+	private String multicityDestinationCity1_xpath="//input[@class='required_field cityPadLeft ac_input destination_m1']";
+	private String multicityDestinationCity2_xpath="//input[@class='required_field cityPadLeft ac_input destination_m2']";	
+	private String multicityDepartDate1_xpath="//input[@id='BE_flight_origin_date_1']";
+	private String multicityDepartDate2_xpath="//input[@id='BE_flight_origin_date_2']";
+	private String multicitySourceCity1_AutocompleteDdown_xpath="//div[@class='ac_results']//div[@class='viewport']//li[1]";
+	private String multicitySourceCity2_AutocompleteDdown_xpath="//div[@class='ac_results']//div[@class='viewport']//li[1]";
+	private String multicityDestinationCity1_AutocompleteDdown_xpath="//div[@class='ac_results dest_ac']//div[@class='viewport']//li[1]";
+	private String multicityDestinationCity2_AutocompleteDdown_xpath="//div[@class='ac_results dest_ac']//div[@class='viewport']//li[1]";
+	//common from and tocity
+	private String fromfirstAutocompleteDdown = "//div[@class='ac_results origin_ac']//div[@class='viewport']//li[1]";
+	private String tofirstAutocompleteDdown = "//div[@class='ac_results dest_ac']//div[@class='viewport']//li[1]";
+	
+	private String roundTripSource_xpath="//input[@id='BE_flight_origin_city']";
+	private String roundTripDestination_xpath="//input[@id='BE_flight_arrival_city']";
+	private String roundTripdepartDateClick_xpath="//input[@id='BE_flight_origin_date']";	
+	private String roundTripreturnDateClick_xpath="//input[@id='BE_flight_arrival_date']";
+	
+	
+	private String travelDropdown_xpath="//div[@id='BE_flight_paxInfoBox']";
+	private String adultSpinner_xpath="//div[@data-flightagegroup='adult']//span[@class='ddSpinnerPlus']";
+			
+	private String childSpinner_xpath="//div[@data-flightagegroup='child']//span[@class='ddSpinnerPlus']";
+	private String infantSpinner_xpath="//div[@data-flightagegroup='infant']//span[@class='ddSpinnerPlus']";
+	
+	private String searchButton_xpath="//input[@id='BE_flight_flsearch_btn']";
+	private String radioGroup_xpath="//div[@id='flight_class_select_child']//li";
+	private String swapCity_xpath="//i[@title='Swap Origin City and Destination City']";
+	private String multicityCheckbox_id="BE_flight_multicity_checkbox";
+	private String clickDoneButton_xpath="//span[@class='done']";
+	
+	
+	//private String  genericSourceXpath ="//div[@class='cal-body BE_flight_origin_date']//div[2]//td[contains(@title,'May') and contains(text(),'"+"<DATE>"+"')]";
+	
+	//multicity text boxes source and destination
+	
+	public void multicitySetSourceCity1(String sourceCity){
+    	//clearText(By.xpath(sourceCity_xpath));
+    	sendText(By.xpath(multicitySourceCity1_xpath),sourceCity);	
+    }
+	
+	public void multicitySetSourceCity2(String sourceCity2){
+    	//clearText(By.xpath(sourceCity_xpath));
+    	sendText(By.xpath(multicitySourceCity2_xpath),sourceCity2);	
+    }
+	
+	public void multicitySetDestinationCity1(String destinationCity){
+    	//clearText(By.xpath(destinationCity_xpath));
+    	sendText(By.xpath(multicityDestinationCity1_xpath),destinationCity);
+    	}
+	
+	public void multicitySetDestinationCity2(String destinationCity2){
+    	//clearText(By.xpath(destinationCity_xpath));
+    	sendText(By.xpath(multicityDestinationCity2_xpath),destinationCity2);  	
+    }
+	
+	//multicity dates
+	
+	public String generateMonthDateXpath_multiCity1(String month, String date){
+		String genericXpath= "//div[@id='PegasusCal-7']//div[@class='month-box'][.//div[contains(@class,'month-title') and contains(text(),'"+"<MONTH>"+"')]]//span[text()='"+"<DATE>"+"']";
+		String monthDateXpath= genericXpath.replace("<MONTH>", month).replace ("<DATE>", date);
+		return monthDateXpath;
+	}
+	
+	public String generateMonthDateXpath_multiCity2(String month, String date){
+		String genericXpath= "//div[@id='PegasusCal-8']//div[@class='month-box'][.//div[contains(@class,'month-title') and contains(text(),'"+"<MONTH>"+"')]]//span[text()='"+"<DATE>"+"']";
+		String monthDateXpath= genericXpath.replace("<MONTH>", month).replace ("<DATE>", date);
+		return monthDateXpath;
+	}
+	
+	public void multicitySelectDepartDate1(String month , String date){
+		String genericXpath= generateMonthDateXpath_multiCity1( month,  date);
+		
+		clickOn(By.xpath(multicityDepartDate1_xpath));
+	    clickOn(By.xpath(String.format(genericXpath,month,date)));
+	}
+	
+	
+	public void multicitySelectDepartDate2(String month , String date){
+		String genericXpath= generateMonthDateXpath_multiCity2( month,  date);
+		
+		clickOn(By.xpath(multicityDepartDate2_xpath));
+	    clickOn(By.xpath(String.format(genericXpath,month,date)));
+	}
+	
+	
+	//roundtrip text boxes source and destination
+	
+	public void roundTripSetSourceCity(String sourceCity){
+    	clearText(By.xpath(roundTripSource_xpath));
+    	sendText(By.xpath(roundTripSource_xpath),sourceCity);
+    	clickOn(By.xpath(fromfirstAutocompleteDdown));	
+    }
+	
+	public void roundTripSetDestinationCity1(String destinationCity){
+    	clearText(By.xpath(roundTripDestination_xpath));
+    	sendText(By.xpath(roundTripDestination_xpath),destinationCity);
+    	clickOn(By.xpath(tofirstAutocompleteDdown));
+    	}
+	/*public String generateMonthDateXpath_SourceroundTrip(String month,String date){
+		//String genericXpath= "//div[@id='PegasusCal-0']//div[@class='month-box'][.//div[contains(@class,'month-title') and contains(text(),'"+"<MONTH>"+"')]]//span[text()='"+"<DATE>"+"']";
+		//String genericXpath= "//div[@class='body-right BE_flight_origin_date']//div[@class='month-box BE_flight_origin_date'][.//div[contains(@class , 'month-title')and contains(text(),'"+"<MONTH>"+"')]][.//td[contains(text(),'"+"<DATE>"+"')]";
+        //String genericSourceXpath ="//div[@class='body-right BE_flight_origin_date']//div[@class='month-box BE_flight_origin_date']//tbody[@class='BE_flight_origin_date']//td[contains(@title,'"+"<MONTH>"+"')and contains(text(),'"+"<DATE>"+"')]";
+		String genericSourceXpath ="//div[@class='body-right BE_flight_origin_date']//div[@class='month-box BE_flight_origin_date']//tbody[@class='BE_flight_origin_date']//td[contains(@title,'%s')]";
+		//String monthDateXpath= genericSourceXpath.replace("<MONTH>", month).replace ("<DATE>", date);
+		return genericSourceXpath;
+	}
+	
+	
+	
+	public String generateMonthDateXpath_DestinationroundTrip(String month, String date){
+		//String genericXpath= "//div[@id='PegasusCal-0']//div[@class='month-box'][.//div[contains(@class,'month-title') and contains(text(),'"+"<MONTH>"+"')]]//span[text()='"+"<DATE>"+"']";
+		//String genericXpath= "//div[@class='body-right BE_flight_origin_date']//div[@class='month-box BE_flight_origin_date'][.//div[contains(@class , 'month-title')and contains(text(),'"+"<MONTH>"+"')]][.//td[contains(text(),'"+"<DATE>"+"')]";
+        String genericReturnXpath ="//div[@class='body-right BE_flight_arrival_date']//div[@class='month-box BE_flight_arrival_date']//tbody[@class='BE_flight_arrival_date']//td[contains(@title,'"+"<MONTH>"+"')and contains(text(),'"+"<DATE>"+"')]";
+		String monthDateXpath= genericReturnXpath.replace("<MONTH>", month).replace ("<DATE>", date);
+		return monthDateXpath;
+	}*/
+	//roundtript dates
+	
+	/*public void roundTripSelectDepartDate(String month , String date){
+		String genericSourceXpath= generateMonthDateXpath_SourceroundTrip( month,  date);
+		
+		clickOn(By.xpath(roundTripdepartDateClick_xpath));
+		//waitInSeconds(2);
+	    clickOn(By.xpath(String.format(genericSourceXpath,month,date)));
+	}
+	
+	/*public void roundTripSelectReturnDate(String month,String date){
+		String genericReturnXpath= generateMonthDateXpath_DestinationroundTrip( month,  date);
+		
+		clickOn(By.xpath(roundTripreturnDateClick_xpath));
+	    clickOn(By.xpath(String.format(genericReturnXpath,month,date)));	
+	}*/
+	
+	
+	
+	
+	public String generateMonthDateXpath_SourceroundTrip(String date){
+		String genericSourceXpath ="//div[@class='cal-body BE_flight_origin_date']//div[2]//td[contains(@title,'May') and contains(text(),'"+"<DATE>"+"')]";
+		String monthDateXpath= genericSourceXpath.replace ("<DATE>", date);
+		return monthDateXpath;
+	}
+	public void roundTripSelectDepartDate(String month ){
+		String genericSourceXpath= generateMonthDateXpath_SourceroundTrip( month);
+		//clickOn(By.xpath(roundTripdepartDateClick_xpath));
+		//waitInSeconds(2);
+	    clickOn(By.xpath(String.format(genericSourceXpath,month)));
+	}
+	
+	public String generateMonthDateXpath_DestinationroundTrip(String date){
+		String genericSourceXpath ="//div[@class='cal-body BE_flight_arrival_date']//div[2]//td[contains(@title,'May') and contains(text(),'"+"<DATE>"+"')]";
+		String monthDateXpath= genericSourceXpath.replace ("<DATE>", date);
+		return monthDateXpath;
+	}
+	
+	public void roundTripSelectReturnDate(String month){
+		String genericReturnXpath= generateMonthDateXpath_DestinationroundTrip( month);
+		
+		clickOn(By.xpath(roundTripreturnDateClick_xpath));
+	    clickOn(By.xpath(String.format(genericReturnXpath,month)));	
+	}
+	
+	
+	
+	public void clickSearchButton(){
+		//waitInSeconds(2);
+		clickOn(By.xpath(searchButton_xpath));
+		
+		
+	}
+		
+	
+	
+	public void setAdultSpiner(int adultCount){
+	     //waitInSeconds(1);
+		clickOn(By.xpath(travelDropdown_xpath));
+		clickAdult(By.xpath(adultSpinner_xpath),adultCount);
+		
+	
+	}
+
+	public void setchildSpiner(int childCount){
+		
+		//clickOn(By.xpath(travelDropdown_xpath));
+		clickOnChildorInfant(By.xpath(childSpinner_xpath),childCount);
+	
+	}
+	
+	
+public void setinfantSpiner(int infantCount){
+		
+		//clickOn(By.xpath(travelDropdown_xpath));
+		clickOnChildorInfant(By.xpath(infantSpinner_xpath),infantCount);
+	
+	}
+
+
+/*public void selectByNameRadio ( int countOption) {
+
+clickRadio(By.xpath(radioGroup_xpath),countOption);
+}*/
+
+public void selectByNameRadio ( String optionName) {
+
+clickRadio(By.xpath(radioGroup_xpath),optionName);
+}
+    
+public void clickDoneButton(){
+	
+	clickOn(By.xpath(clickDoneButton_xpath));
+	
+}
+public void swapCity(){
+	//setSourceCity(sourceCity);
+	//setDestinationCity(destinationCity);
+	//waitInSeconds(1);
+	//mouseHover(By.xpath(swapCity_xpath));
+	clickSwap(By.xpath(swapCity_xpath));
+	
+}
+
+
+public boolean isMulticitySelected(){
+	
+	boolean checkedAttribute = getcheckboxvalue(By.id(multicityCheckbox_id));
+	
+	return checkedAttribute;
+		
+}
+
+
+
+}
+
+	
+
+

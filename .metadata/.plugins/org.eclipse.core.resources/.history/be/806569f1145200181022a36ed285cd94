@@ -1,0 +1,36 @@
+package base;
+
+import java.util.List;
+import java.util.logging.Level;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class using {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriver driver;
+		System.setProperty("webdriver.gecko.driver", "binaries2/geckodriver.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		FirefoxOptions fOptions = new FirefoxOptions();
+		fOptions.setLogLevel(Level.SEVERE);
+		capabilities.setCapability("moz:firefoxOptions", fOptions);
+		capabilities.setCapability("marinette", true);
+		driver = new FirefoxDriver(capabilities);
+		driver.navigate().to("www.yatra.co.uk");
+		 List <WebElement> li= driver.findElements(By.xpath("//div[@class='mor-option']//ul[@class='selc-flight-options prefer']//li"));
+	       // System.out.println(li.size());
+	                for(int i=0;i<=li.size()-1;i++)
+	                {
+	                   if( li.get(i).getText().equals("Create multi-city route"))
+	                	   li.get(i).click();
+	                }
+
+	}
+
+}

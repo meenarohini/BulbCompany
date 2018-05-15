@@ -1,0 +1,91 @@
+package helper;
+
+
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.ElementNotVisibleException;
+import org.openqa.selenium.InvalidElementStateException;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class ElementActions {
+
+	WebDriver driver = null;
+	Actions actions;
+	WebDriverWait wait;
+	JavascriptExecutor js;
+	
+	public ElementActions(WebDriver driver){
+		this.driver = driver;
+		actions = new Actions(driver);
+		wait = new WebDriverWait(driver,35);
+		js = (JavascriptExecutor)driver;
+		
+	}
+	
+	
+	public void waitForPageToBeLoaded(){
+		long intialTime = System.currentTimeMillis();
+		long currentTime = intialTime;
+		long maxWaitTime = 5*60*1000;
+		
+		while (!(js.executeScript("return document.readyState").equals("complete")) && currentTime-intialTime<maxWaitTime) {
+			try {
+				Thread.sleep(200);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			currentTime = System.currentTimeMillis();
+		}
+	}
+	
+	public void clickOn(By locator){
+		
+		clickOn(locator, false);
+	}
+	
+	public void clickOn(By locator, boolean isScrollIntoView){
+		try{
+			try{
+				//aitInSeconds(5);
+			wait.until(ExpectedConditions.elementToBeClickable(locator));
+				if(isScrollIntoView)
+			js.executeScript("arguments[0].scrollIntoView(true);", driver.findElement(locator));
+				
+		driver.findElement(locator).click();
+			}
+			catch(NoSuchElementException e){
+				System.out.println(""+e);
+			}
+	}
+		catch(TimeoutException e){
+			throw e;
+		}
+		
+		//waitInSeconds(2);
+		//waitForPageToBeLoaded();
+	}
+	
+	
+		
+	
+	  public void enterTextTo(By locator, value){
+		  driver.findElement(locator).sendKeys(value)
+	  }
+	
+}

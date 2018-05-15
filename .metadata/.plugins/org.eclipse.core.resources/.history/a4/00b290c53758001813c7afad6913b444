@@ -1,0 +1,43 @@
+package pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+public class BuulbReadingPage extends BasePage{
+
+	
+		
+		
+		private By inputmeterTxtBox1 = By.id("x-buy-amount");
+		private By convertedCurrencyTxtBox = By.id("x-cost");
+		private By date_ clickid = By.id("locator");  //locator for date for reading clicking
+		private 
+		private By meterButton = By.xpath("//button[contains(@class,'addmeter')]");  //assumption
+		
+		
+		public BuulbReadingPage(WebDriver driver){
+			super(driver);
+			waitForPageToBeLoaded();
+		}
+		
+		public void setMeterEach Reading(){
+		SetElementText(WebDriver driver, WebElement textInput, String textValue);
+}
+
+
+		public String generateMonthDateXpath_DatemeterReading(String month , String date){
+			String genericXpath= "//div[@id='value']//div[@class='month-box'][.//div[contains(@class,'month-title') and contains(text(),'"+"<MONTH>"+"')]]//span[text()='"+"<DATE>"+"']";
+			String monthDateXpath= genericXpath.replace("<MONTH>", month).replace ("<DATE>", date);
+			return monthDateXpath;
+		}
+		
+		public void dateMeterReading(String month,string date){
+			String genericReturnXpath= generateMonthDateXpath_DatemeterReading(String month , String date)
+			
+			clickOn(date_ clickid);
+		    clickOn(By.xpath(String.format(genericReturnXpath,month)));	
+		}
+		
+
+
+}
